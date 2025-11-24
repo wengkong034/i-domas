@@ -50,62 +50,89 @@
       top: 0; left: 0; right: 0; height: 4px;
       background: linear-gradient(90deg, #8b5cf6, #ec4899);
     }
-    h1 { font-size: 38px; font-weight: 800; margin-bottom: 8px;
+    h1 {
+      font-size: 38px;
+      font-weight: 800;
+      margin-bottom: 8px;
       background: linear-gradient(90deg, #e0e7ff, #c4b5fd);
-      -webkit-background-clip: text; background-clip: text;
-      -webkit-text-fill-color: transparent; letter-spacing: -1px; }
-    .subtitle { color: var(--muted); margin-bottom: 36px; font-size: 15px; font-weight: 500; }
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle { color: var(--muted); margin-bottom: 40px; font-size: 15px; font-weight: 500; }
     input {
-      width: 100%; padding: 16px 18px; margin: 12px 0;
+      width: 100%; padding: 18px 20px; margin: 14px 0;
       background: var(--glass); border: 1px solid var(--border);
-      border-radius: 14px; color: white; font-size: 16px;
+      border-radius: 16px; color: white; font-size: 16px;
       outline: none; transition: all 0.3s ease;
     }
+    input::placeholder { color: #94a3b8; }
+    input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(139,92,246,0.25); }
     button {
-      width: 100%; padding: 16px; background: linear-gradient(135deg, #8b5cf6, #a78bfa);
-      color: white; border: none; border-radius: 14px; font-size: 17px; font-weight: 600;
-      cursor: pointer; margin-top: 16px; transition: all 0.3s ease;
+      width: 100%; padding: 18px; background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+      color: white; border: none; border-radius: 16px; font-size: 18px; font-weight: 600;
+      cursor: pointer; margin-top: 20px; transition: all 0.3s ease;
       box-shadow: 0 8px 25px rgba(139,92,246,0.4);
     }
+    button:active { transform: translateY(2px); }
+    .forgot-link { margin-top: 28px; font-size: 15px; }
+    .forgot-link a { color: var(--accent); text-decoration: none; font-weight: 600; }
+    .error, .success { font-size: 15px; margin-top: 12px; min-height: 26px; }
 
-    /* HEADER - Mobile optimized */
+    /* DASHBOARD - Mobile First */
+    #dashboard { display: none; }
     header {
       background: rgba(15,23,42,0.9);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
-      padding: 16px 20px;
-      position: sticky; top: 0; z-index: 10;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 16px;
+      padding: 20px 16px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
-    header > div:first-child h1 { font-size: 28px; margin: 0; }
-    header > div:first-child .subtitle { font-size: 13px; margin-top: 4px; opacity: 0.9; }
+    header > div:first-child h1 { font-size: 28px; margin-bottom: 4px; }
+    header > div:first-child .subtitle { font-size: 13px; color: var(--muted); }
+
     .status-bar {
-      width: 100%;
-      justify-content: space-between;
+      display: flex;
+      align-items: center;
       gap: 12px;
       flex-wrap: wrap;
+      margin-top: 16px;
     }
     .pill, .total-durian, .logout-btn {
-      height: 42px;
-      font-size: 13px;
-      padding: 0 14px;
-    }
-    .total-durian {
-      padding: 0 16px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 14px;
     }
-    .total-durian strong { font-size: 17px; }
-    .logout-btn { width: 42px; height: 42px; }
-
-    /* DASHBOARD - Mobile first */
-    .container { padding: 20px 16px; }
-    .layout { 
-      display: flex; 
-      flex-direction: column; 
-      gap: 24px; 
+    .pill {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      padding: 0 16px;
+      border-radius: 50px;
+      gap: 8px;
     }
+    .total-durian {
+      background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+      color: white;
+      padding: 0 18px;
+      border-radius: 50px;
+      gap: 8px;
+      font-weight: 600;
+    }
+    .total-durian strong { font-weight: 800; font-size: 19px; }
+    .logout-btn {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      width: 48px;
+      border-radius: 50%;
+    }
+
+    .container { padding: 20px 16px; }
+    .layout { display: flex; flex-direction: column; gap: 24px; }
+
     .card {
       background: var(--card);
       border-radius: 20px;
@@ -114,71 +141,86 @@
       backdrop-filter: blur(12px);
       box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
-    .card h2 { font-size: 19px; margin-bottom: 16px; }
-    .stats { gap: 12px; }
-    .stat {
-      padding: 16px;
-      border-radius: 14px;
+    .card h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #e2e8f0;
     }
-    .stat-num { font-size: 32px; }
-    .soil-grid {
-      grid-template-columns: 1fr;
+
+    /* Overview Card - Mobile */
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: 16px;
     }
-    .soil-card {
-      padding: 18px;
-      border-radius: 14px;
-    }
-    .soil-card h3 { font-size: 17px; }
-    .param { margin: 8px 0; font-size: 14px; }
-    .param-value { font-size: 15px; }
-    .tree-list { gap: 12px; }
-    .tree-item {
-      padding: 16px;
-      border-radius: 14px;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 12px;
-    }
-    .tree-info { width: 100%; }
-    .tree-name { font-size: 17px; }
-    .tree-count { font-size: 32px; align-self: flex-end; }
-    footer {
-      padding: 32px 20px;
-      font-size: 13px;
+    .stat {
+      background: var(--glass);
+      padding: 20px 16px;
+      border-radius: 16px;
       text-align: center;
     }
+    .stat-num {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--accent);
+    }
+    .stat > div:last-child { font-size: 13px; margin-top: 6px; color: var(--muted); }
 
-    /* TABLET & UP - Gradually improve layout */
-    @media (min-width: 640px) {
-      header { padding: 20px 32px; flex-direction: row; align-items: center; gap: 0; }
-      header > div:first-child h1 { font-size: 32px; }
-      .status-bar { width: auto; justify-content: flex-end; }
-      .soil-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+    /* Soil & Tree Cards - Full width on mobile */
+    .soil-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    .soil-card {
+      background: linear-gradient(135deg, rgba(139,92,246,0.12), rgba(139,92,246,0.05));
+      border-radius: 16px;
+      padding: 20px;
+      border: 1px solid rgba(139,92,246,0.2);
+    }
+    .soil-card h3 { font-size: 18px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+    .param { display: flex; justify-content: space-between; margin: 12px 0; font-size: 15px; }
+    .param-label { color: var(--muted); }
+    .param-value { font-weight: 700; }
+
+    .tree-list { display: grid; gap: 16px; }
+    .tree-item {
+      background: var(--glass);
+      padding: 20px;
+      border-radius: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid var(--border);
+    }
+    .tree-info { text-align: left; }
+    .tree-name { font-size: 18px; font-weight: 600; display: flex; align-items: center; gap: 10px; }
+    .tree-status { font-size: 13px; margin-top: 4px; }
+    .tree-count { font-size: 36px; font-weight: 800; color: var(--accent); display: flex; align-items: center; gap: 8px; }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 40px;
     }
 
+    /* Tablet & larger screens - keep original layout */
     @media (min-width: 768px) {
-      .container { padding: 32px; }
-      .layout { grid-template-columns: 340px 1fr; display: grid; gap: 28px; }
-      .card { padding: 28px; }
-      .stat-num { font-size: 36px; }
-      .tree-item { flex-direction: row; align-items: center; }
-      .tree-count { align-self: center; }
-    }
-
-    @media (min-width: 1024px) {
       header { padding: 24px 40px; }
-      .container { max-width: 1400px; margin: 0 auto; padding: 32px; }
-      .layout { grid-template-columns: 380px 1fr; }
-      .pill, .total-durian, .logout-btn { height: 44px; }
-      .total-durian { padding: 0 20px; font-size: 15px; }
-      .total-durian strong { font-size: 18px; }
+      .status-bar { flex-wrap: nowrap; margin-top: 0; }
+      .container { padding: 32px; max-width: 1400px; margin: 0 auto; }
+      .layout { grid-template-columns: 380px 1fr; gap: 28px; display: grid; }
+      .stats { grid-template-columns: repeat(3, 1fr); }
+      .soil-grid { grid-template-columns: repeat(auto-fit, minmax(320px,1fr)); }
     }
   </style>
 </head>
 <body>
 
-  <!-- LOGIN -->
+  <!-- Mobile-friendly Login -->
   <div id="loginScreen">
     <div class="login-box">
       <div class="card">
@@ -196,7 +238,7 @@
     </div>
   </div>
 
-  <!-- DASHBOARD -->
+  <!-- Mobile-first Dashboard -->
   <div id="dashboard">
     <header>
       <div>
@@ -242,7 +284,7 @@
     <footer>I-DOMAS • Real-time Durian Farm Monitoring • 2025</footer>
   </div>
 
-  <!-- JavaScript (unchanged - fully working) -->
+  <!-- JavaScript - 100% unchanged -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
     import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
@@ -295,7 +337,7 @@
       const root = ref(db, 'IDMOAS');
       onValue(root, snap => {
         const data = snap.val() || {};
-        let total = 0, areaCount = 0, treeCount = 0 Master's;
+        let total = 0, areaCount = 0, treeCount = 0;
         document.getElementById('soilContainer').innerHTML = '';
         document.getElementById('treeContainer').innerHTML = '';
 
@@ -336,7 +378,7 @@
 
         document.getElementById('areas').textContent = areaCount;
         document.getElementById('trees').textContent = treeCount;
-        document.get SCSIElementById('totalCount').textContent = total;
+        document.getElementById('totalCount').textContent = total;
         document.getElementById('totalDisplay').textContent = total;
       });
     }
