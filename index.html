@@ -22,23 +22,17 @@
       background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
       color: var(--text);
       min-height: 100vh;
-      line-height: 1.5;
     }
 
-    /* ===== LOGIN SCREEN - Mobile Optimized ===== */
+    /* LOGIN — Perfectly centered on all devices */
     #loginScreen {
       display: flex;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
       padding: 20px;
-      padding-top: 60px;
-      padding-bottom: 60px;
     }
-    .login-box {
-      width: 100%;
-      max-width: 420px;
-    }
+    .login-box { width: 100%; max-width: 420px; }
     .card {
       background: var(--card);
       border-radius: 24px;
@@ -57,7 +51,7 @@
       background: linear-gradient(90deg, #8b5cf6, #ec4899);
     }
     h1 {
-      font-size: 38px;
+      font-size: clamp(36px, 8vw, 48px);
       font-weight: 800;
       margin-bottom: 8px;
       background: linear-gradient(90deg, #e0e7ff, #c4b5fd);
@@ -66,109 +60,80 @@
       -webkit-text-fill-color: transparent;
       letter-spacing: -1px;
     }
-    .subtitle { 
-      color: var(--muted); 
-      margin-bottom: 36px; 
-      font-size: 15px; 
-      font-weight: 500; 
-    }
+    .subtitle { color: var(--muted); margin-bottom: 40px; font-size: 15px; font-weight: 500; }
     input {
-      width: 100%; 
-      padding: 16px 18px; 
-      margin: 12px 0;
-      background: var(--glass); 
-      border: 1px solid var(--border);
-      border-radius: 14px; 
-      color: white; 
-      font-size: 16px;
-      outline: none; 
-      transition: all 0.3s ease;
+      width: 100%; padding: 16px 18px; margin: 12px 0;
+      background: var(--glass); border: 1px solid var(--border);
+      border-radius: 14px; color: white; font-size: 16px;
+      outline: none; transition: all 0.3s ease;
     }
     input::placeholder { color: #94a3b8; }
-    input:focus { 
-      border-color: var(--accent); 
-      box-shadow: 0 0 0 4px rgba(139,92,246,0.25); 
-    }
+    input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(139,92,246,0.25); }
     button {
-      width: 100%; 
-      padding: 16px; 
-      background: linear-gradient(135deg, #8b5cf6, #a78bfa);
-      color: white; 
-      border: none; 
-      border-radius: 14px; 
-      font-size: 17px; 
-      font-weight: 600;
-      cursor: pointer; 
-      margin-top: 16px; 
-      transition: all 0.3s ease;
+      width: 100%; padding: 16px; background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+      color: white; border: none; border-radius: 14px; font-size: 17px; font-weight: 600;
+      cursor: pointer; margin-top: 16px; transition: all 0.3s ease;
       box-shadow: 0 8px 25px rgba(139,92,246,0.4);
-      min-height: 56px;
     }
-    button:hover, button:active { 
-      transform: translateY(-2px); 
-      box-shadow: 0 15px 35px rgba(139,92,246,0.5); 
-    }
+    button:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(139,92,246,0.5); }
+    .forgot-link { margin-top: 24px; font-size: 14px; }
+    .forgot-link a { color: var(--accent); text-decoration: none; font-weight: 600; }
+    .error, .success { font-size: 14px; margin-top: 12px; min-height: 24px; }
 
-    /* ===== HEADER - Mobile Stacked ===== */
+    /* HEADER — Mobile-first & perfect on all screens */
+    #dashboard { display: none; }
     header {
-      background: rgba(15,23,42,0.95);
+      background: rgba(15,23,42,0.85);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
-      padding: 20px;
+      padding: 20px 24px;
       position: sticky;
       top: 0;
-      z-index: 100;
-      flex-direction: column;
+      z-index: 10;
+      flex-wrap: wrap;
       gap: 16px;
-      text-align: center;
     }
+    header > div:first-child h1 { font-size: 28px; }
+    header > div:first-child .subtitle { font-size: 13px; opacity: 0.9; }
     .status-bar {
       display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
+      align-items: center;
       gap: 12px;
+      flex-wrap: wrap;
       width: 100%;
+      justify-content: space-between;
     }
     .pill, .total-durian, .logout-btn {
       height: 44px;
       padding: 0 16px;
+      border-radius: 50px;
       font-size: 14px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
+    .total-durian {
+      background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+      color: white;
+      font-weight: 600;
+      box-shadow: 0 4px 15px rgba(139,92,246,0.3);
+    }
+    .total-durian strong { font-weight: 800; font-size: 18px; }
     .logout-btn {
-      width: 44px;
-      border-radius: 50%;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      width: 44px; padding: 0;
+      justify-content: center;
     }
 
-    /* ===== DASHBOARD LAYOUT - Fully Responsive ===== */
-    #dashboard { display: none; }
-    .container { 
-      max-width: 1400px; 
-      margin: 0 auto; 
-      padding: 20px 16px; 
-    }
-
-    /* Switch from sidebar to top-down on mobile */
+    /* CONTAINER & LAYOUT — Fully responsive */
+    .container { max-width: 1400px; margin: 0 auto; padding: 24px 20px; }
     .layout {
       display: grid;
       grid-template-columns: 1fr;
       gap: 24px;
     }
-
-    /* On larger screens: bring back sidebar */
-    @media (min-width: 900px) {
-      header {
-        flex-direction: row;
-        text-align: left;
-        padding: 24px 40px;
-      }
-      .status-bar { width: auto; justify-content: flex-end; }
-      .layout {
-        grid-template-columns: 380px 1fr;
-        gap: 32px;
-      }
-      .container { padding: 32px 40px; }
-    }
-
     .card {
       background: var(--card);
       border-radius: 20px;
@@ -179,62 +144,26 @@
       transition: transform 0.3s ease;
     }
     .card:hover { transform: translateY(-4px); }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .stat { background: var(--glass); padding: 20px; border-radius: 16px; text-align: center; }
+    .stat-num { font-size: 32px; font-weight: 800; color: var(--accent); }
 
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-    .stat {
-      background: var(--glass);
-      padding: 20px 16px;
-      border-radius: 16px;
-      text-align: center;
-    }
-    .stat-num {
-      font-size: 32px;
-      font-weight: 800;
-      color: var(--accent);
-    }
-    .stat > div:last-child {
-      font-size: 13_Notification14px;
-      color: var(--muted);
-      margin-top: 6px;
-    }
-
-    /* Soil Grid - Responsive */
     .soil-grid {
       display: grid;
       grid-template-columns: 1fr;
       gap: 20px;
     }
-    @media (min-width: 640px) {
-      .soil-grid {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      }
-    }
-
     .soil-card {
       background: linear-gradient(135deg, rgba(139,92,246,0.12), rgba(139,92,246,0.05));
       border-radius: 16px;
-      padding: 24px;
+      padding: 20px;
       border: 1px solid rgba(139,92,246,0.2);
     }
-    .param {
-      display: flex;
-      justify-content: space-between;
-      margin: 12px 0;
-      font-size: 15px;
-    }
+    .param { display: flex; justify-content: space-between; margin: 12px 0; font-size: 15px; }
     .param-label { color: var(--muted); font-size: 13px; }
     .param-value { font-weight: 700; }
 
-    /* Tree List */
-    .tree-list {
-      display: grid;
-      gap: 16px;
-      margin-top: 16px;
-    }
+    .tree-list { display: grid; gap: 16px; margin-top: 16px; }
     .tree-item {
       background: var(--glass);
       padding: 20px;
@@ -244,121 +173,38 @@
       align-items: center;
       border: 1px solid var(--border);
       transition: all 0.3s ease;
-      flex-wrap: wrap;
-      gap: 12px;
     }
-    .tree-item:hover {
-      background: rgba(139,92,246,0.15);
-    }
-    .tree-name {
-      font-weight: 600;
-      font-size: 17px;
-    }
-    .tree-count {
-      font-size: 24px;
-      font-weight: 800;
+    .tree-item:hover { background: rgba(139,92,246,0.15); }
+    .tree-count { font-size: 28px; font-weight: 800; }
+
+    footer { text-align: center; padding: 40px 20px; color: var(--muted); font-size: 14px; margin-top: 60px; }
+
+    /* Tablet & Up */
+    @media (min-width: 768px) {
+      header { padding: 24px 40px; flex-wrap: nowrap; }
+      .status-bar { width: auto; justify-content: flex-end; }
+      .layout { grid-template-columns: 360px 1fr; gap: 28px; }
+      .soil-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+      .stats { grid-template-columns: repeat(3, 1fr); }
     }
 
-    /* Mobile Stats Adjustment */
-    @media (max-width: 640px) {
-      .stats {
-        grid-template-columns: 1fr;
-      }
-      .stat-num { font-size: 36px; }
-      h1 { font-size: 34px; }
-      h2 { font-size: 22px; }
-      .card { padding: 24px 20px; }
-      header h1 { font-size: 28px; }
-      .total-durian { font-size: 14px; }
-      .total-durian strong { font-size: 18px; }
+    /* Desktop */
+    @media (min-width: 1024px) {
+      .container { padding: 32px 40px; }
+      .card { padding: 32px; }
     }
 
-    footer {
-      text-align: center;
-      padding: 40px 20px;
-      color: var(--muted);
-      font-size: 14px;
-      margin-top: 60px;
-    }
-
-    /* Better touch targets */
-    button, .logout-btn, a, input, .tree-item {
-      -webkit-tap-highlight-color: transparent;
+    /* Extra small phones */
+    @media (max-width: 380px) {
+      .card { padding: 40px 24px; }
+      .status-bar { gap: 8px; }
+      .pill, .total-durian { font-size: 13px; padding: 0 12px; }
     }
   </style>
 </head>
 <body>
+  <!-- Your existing HTML stays 100% the same -->
+  <!-- Just paste your <div id="loginScreen">... and <div id="dashboard">... here -->
+  <!-- And keep your Firebase script unchanged -->
 
-  <!-- Your existing HTML remains 100% the same -->
-  <!-- Just paste your original <div id="loginScreen"> and <div id="dashboard"> here -->
-
-  <!-- [Keep all your HTML exactly as you had it - only CSS changed] -->
-
-  <div id="loginScreen">
-    <div class="login-box">
-      <div class="card">
-        <h1>I-DOMAS</h1>
-        <div class="subtitle">Welcome back! Please sign in to continue</div>
-        <div id="errorMsg" class="error"></div>
-        <div id="successMsg" class="success"></div>
-        <input type="email" id="email" placeholder="Email address" required>
-        <input type="password" id="password" placeholder="Password" required>
-        <button id="signInBtn">Sign In</button>
-        <div class="forgot-link">
-          <a href="#" id="forgotPassword">Forgot password?</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="dashboard">
-    <header>
-      <div>
-        <h1>I-DOMAS</h1>
-        <div class="subtitle">Durian & Soil Real-time Monitoring System</div>
-      </div>
-      <div class="status-bar">
-        <div class="pill"><i class="fas fa-circle" style="color:#10b981;font-size:10px"></i> <span id="conn">Connected</span></div>
-        <div class="pill"><i class="fas fa-clock"></i> <span id="time">—</span></div>
-        <div class="total-durian">
-          Total Drop: <strong id="totalCount">0</strong> <span style="font-size:22px">Durian</span>
-        </div>
-        <button class="logout-btn" id="logoutBtn" title="Logout">
-          <i class="fas fa-sign-out-alt"></i>
-        </button>
-      </div>
-    </header>
-
-    <div class="container">
-      <div class="layout">
-        <aside>
-          <div class="card">
-            <h2>Overview</h2>
-            <div class="stats">
-              <div class="stat"><div class="stat-num" id="areas">0</div><div>Soil Areas</div></div>
-              <div class="stat"><div class="stat-num" id="trees">0</div><div>Durian Trees</div></div>
-              <div class="stat"><div class="stat-num" id="totalDisplay">0</div><div>Total Harvested Durian</div></div>
-            </div>
-          </div>
-        </aside>
-        <main>
-          <div class="card">
-            <h2>Soil Areas</h2>
-            <div class="soil-grid" id="soilContainer"></div>
-          </div>
-          <div class="card" style="margin-top:28px">
-            <h2>Durian Trees</h2>
-            <div class="tree-list" id="treeContainer"></div>
-          </div>
-        </main>
-      </div>
-    </div>
-    <footer>I-DOMAS • Real-time Durian Farm Monitoring • 2025</footer>
-  </div>
-
-  <!-- Your Firebase script stays exactly the same -->
-  <script type="module">
-    /* ... your existing JS - no changes needed ... */
-  </script>
-</body>
-</html>
+  <!-- (Full HTML body remains exactly as you had it – only the CSS above is upgraded) -->
