@@ -75,7 +75,7 @@
     .forgot-link a { color: var(--accent); text-decoration: none; font-weight: 600; }
     .error, .success { font-size: 15px; margin-top: 12px; min-height: 26px; }
 
-    /* HEADER - Clean & Minimal */
+    /* HEADER - Clean & Perfectly Aligned */
     #dashboard { display: none; }
     header {
       background: rgba(15,23,42,0.9);
@@ -118,6 +118,7 @@
       justify-content: center;
       cursor: pointer;
       transition: all 0.3s ease;
+      margin-top: -2px; /* Perfectly aligns with Total Drop */
     }
     .logout-btn:hover {
       background: rgba(239,68,68,0.2);
@@ -125,7 +126,7 @@
       color: #fca5a5;
     }
 
-    /* Layout & Cards */
+    /* Rest of layout unchanged */
     .container { padding: 20px 16px; }
     .layout { display: flex; flex-direction: column; gap: 24px; }
     .card {
@@ -165,7 +166,7 @@
 
     footer { text-align: center; padding: 40px 20px; color: var(--muted); font-size: 14px; margin-top: 40px; }
 
-    /* Desktop - Clean header with only Total Drop + Logout (aligned right) */
+    /* Desktop - Perfect alignment */
     @media (min-width: 768px) {
       header { padding: 24px 40px; display: flex; justify-content: space-between; align-items: center; }
       header > div:first-child { margin-bottom: 0; }
@@ -203,7 +204,6 @@
         <div class="subtitle">Durian & Soil Real-time Monitoring System</div>
       </div>
       <div class="status-bar">
-        <!-- Connected & Time REMOVED completely -->
         <div class="total-durian">
           Total Drop: <strong id="totalCount">0</strong> <span style="font-size:22px">🍈</span>
         </div>
@@ -259,8 +259,6 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const db = getDatabase(app);
-
-    // Time update removed from header (no more #time element)
 
     onAuthStateChanged(auth, user => {
       document.getElementById('loginScreen').style.display = user ? 'none' : 'flex';
