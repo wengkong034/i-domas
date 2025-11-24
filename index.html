@@ -24,7 +24,7 @@
       min-height: 100vh;
     }
 
-    /* LOGIN - unchanged */
+    /* LOGIN - Gap completely removed */
     #loginScreen {
       display: flex;
       align-items: center;
@@ -36,7 +36,7 @@
     .card {
       background: var(--card);
       border-radius: 24px;
-      padding: 48px 32px;
+      padding: 40px 32px; /* Reduced top padding to remove gap */
       border: 1px solid rgba(255,255,255,0.12);
       backdrop-filter: blur(20px);
       box-shadow: 0 25px 60px rgba(0,0,0,0.5);
@@ -50,32 +50,55 @@
       top: 0; left: 0; right: 0; height: 4px;
       background: linear-gradient(90deg, #8b5cf6, #ec4899);
     }
-    h1 { font-size: 38px; font-weight: 800; margin-bottom: 8px;
+    h1 { 
+      font-size: 38px; 
+      font-weight: 800; 
+      margin-bottom: 6px; /* Tighter spacing */
       background: linear-gradient(90deg, #e0e7ff, #c4b5fd);
-      -webkit-background-clip: text; background-clip: text;
+      -webkit-background-clip: text; 
+      background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .subtitle { color: var(--muted); margin-bottom: 40px; font-size: 15px; font-weight: 500; }
+    .subtitle { 
+      color: var(--muted); 
+      margin-bottom: 24px; /* Reduced from 40px → no more big gap */
+      font-size: 15px; 
+      font-weight: 500; 
+    }
     input {
-      width: 100%; padding: 18px 20px; margin: 14px 0;
-      background: var(--glass); border: 1px solid var(--border);
-      border-radius: 16px; color: white; font-size: 16px;
-      outline: none; transition: all 0.3s ease;
+      width: 100%; 
+      padding: 18px 20px; 
+      margin: 12px 0; /* Slightly tighter */
+      background: var(--glass); 
+      border: 1px solid var(--border);
+      border-radius: 16px; 
+      color: white; 
+      font-size: 16px;
+      outline: none; 
+      transition: all 0.3s ease;
     }
     input::placeholder { color: #94a3b8; }
     input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(139,92,246,0.25); }
     button {
-      width: 100%; padding: 18px; background: linear-gradient(135deg, #8b5cf6, #a78bfa);
-      color: white; border: none; border-radius: 16px; font-size: 18px; font-weight: 600;
-      cursor: pointer; margin-top: 20px; transition: all 0.3s ease;
+      width: 100%; 
+      padding: 18px; 
+      background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+      color: white; 
+      border: none; 
+      border-radius: 16px; 
+      font-size: 18px; 
+      font-weight: 600;
+      cursor: pointer; 
+      margin-top: 16px; 
+      transition: all 0.3s ease;
       box-shadow: 0 8px 25px rgba(139,92,246,0.4);
     }
     button:active { transform: translateY(2px); }
-    .forgot-link { margin-top: 28px; font-size: 15px; }
+    .forgot-link { margin-top: 24px; font-size: 15px; }
     .forgot-link a { color: var(--accent); text-decoration: none; font-weight: 600; }
     .error, .success { font-size: 15px; margin-top: 12px; min-height: 26px; }
 
-    /* HEADER - Clean & Perfectly Aligned */
+    /* HEADER - Clean & Aligned */
     #dashboard { display: none; }
     header {
       background: rgba(15,23,42,0.9);
@@ -118,7 +141,7 @@
       justify-content: center;
       cursor: pointer;
       transition: all 0.3s ease;
-      margin-top: -2px; /* Perfectly aligns with Total Drop */
+      margin-top: -2px;
     }
     .logout-btn:hover {
       background: rgba(239,68,68,0.2);
@@ -126,7 +149,7 @@
       color: #fca5a5;
     }
 
-    /* Rest of layout unchanged */
+    /* Dashboard layout */
     .container { padding: 20px 16px; }
     .layout { display: flex; flex-direction: column; gap: 24px; }
     .card {
@@ -166,7 +189,7 @@
 
     footer { text-align: center; padding: 40px 20px; color: var(--muted); font-size: 14px; margin-top: 40px; }
 
-    /* Desktop - Perfect alignment */
+    /* Desktop */
     @media (min-width: 768px) {
       header { padding: 24px 40px; display: flex; justify-content: space-between; align-items: center; }
       header > div:first-child { margin-bottom: 0; }
@@ -175,6 +198,7 @@
       .layout { grid-template-columns: 380px 1fr; gap: 28px; display: grid; }
       .stats { grid-template-columns: repeat(3, 1fr); }
       .soil-grid { grid-template-columns: repeat(auto-fit, minmax(320px,1fr)); }
+      .card { padding: 48px 32px; } /* Slightly more breathing room on desktop */
     }
   </style>
 </head>
@@ -240,7 +264,6 @@
     <footer>I-DOMAS • Real-time Durian Farm Monitoring • 2025</footer>
   </div>
 
-  <!-- JavaScript - unchanged -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
     import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
